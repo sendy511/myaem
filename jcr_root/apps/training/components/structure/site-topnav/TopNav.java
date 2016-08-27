@@ -20,7 +20,7 @@ public class TopNav extends WCMUsePojo{
         	rootPage = getCurrentPage();
         }
         
-        Iterator<Page> childPages = rootPage.listChildren(new PageFilter(getRequest()));
+        Iterator<Page> childPages = getCurrentPage().listChildren(new PageFilter(getRequest()));
 	   	while (childPages.hasNext()) {
 			items.add(childPages.next());
 	   	}
