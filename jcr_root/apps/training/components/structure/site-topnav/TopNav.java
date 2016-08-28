@@ -5,11 +5,15 @@ import java.util.Iterator;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageFilter;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.adobe.cq.sightly.WCMUsePojo;
 
 public class TopNav extends WCMUsePojo{
     private List<Page> items = new ArrayList<Page>();
     private Page rootPage;
+    private static final Logger LOG = LoggerFactory.getLogger(TopNav.class);
 
     // Initializes the navigation
     @Override
@@ -19,6 +23,8 @@ public class TopNav extends WCMUsePojo{
         if (rootPage == null) {
         	rootPage = getCurrentPage();
         }
+        
+        LOG.info("##### Root page is : " + rootPage.getTitle());
         
         Iterator<Page> childPages = rootPage.listChildren(new PageFilter(getRequest()));
 	   	while (childPages.hasNext()) {

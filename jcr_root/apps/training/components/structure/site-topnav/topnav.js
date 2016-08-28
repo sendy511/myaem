@@ -5,6 +5,8 @@ use(function () {
         root = currentPage;
     }
     
+    log.info("############### Root page is : " + root.getTitle());
+    
     var it = root.listChildren(new Packages.com.day.cq.wcm.api.PageFilter());
     while(it.hasNext()){
         var page = it.next();
