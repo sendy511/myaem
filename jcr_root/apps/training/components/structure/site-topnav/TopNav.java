@@ -14,13 +14,13 @@ public class TopNav extends WCMUsePojo{
     // Initializes the navigation
     @Override
     public void activate() throws Exception {
-        rootPage = getCurrentPage().getAbsoluteParent(1);
+        rootPage = getCurrentPage().getAbsoluteParent(2);
 
         if (rootPage == null) {
         	rootPage = getCurrentPage();
         }
         
-        Iterator<Page> childPages = getCurrentPage().listChildren(new PageFilter(getRequest()));
+        Iterator<Page> childPages = rootPage.listChildren(new PageFilter(getRequest()));
 	   	while (childPages.hasNext()) {
 			items.add(childPages.next());
 	   	}
